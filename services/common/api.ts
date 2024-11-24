@@ -1,9 +1,3 @@
-declare global {
-    interface Window { vars: any; }
-}
-
-window.vars = window.vars || {};
-
 export enum HttpMethod {
     GET = 'GET',
     POST = 'POST',
@@ -33,7 +27,7 @@ export class ApiClient {
             ...options,
             method: options.method || HttpMethod.GET,
             headers: options.headers || {
-                mode: 'no-cors'
+             //   mode: 'no-cors'
             },
             body: options.body ? JSON.stringify(options.body) : undefined,
         };
