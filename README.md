@@ -1,50 +1,59 @@
-# Welcome to your Expo app 👋
+# WeatherApp
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Overview
+WeatherApp is a React Native application that allows users to input a location and view the weather. The app supports toggling between two weather services and is built with TypeScript. It includes unit tests and prioritizes modularity to ensure ease of maintenance and adaptability.
 
-## Get started
+## Features
+- Input a location to see the weather.
+- Toggle between two weather services.
+- Automatic UI refresh when toggling services with an entered location.
+- TypeScript for type safety and better code quality.
+- Unit testing for reliability.
+- Modular design for easy maintenance and adaptability.
+- Input validation to ensure valid location entries.
 
-1. Install dependencies
+## Implementation Details
 
-   ```bash
-   npm install
-   ```
+### Weather Services
+The application supports two weather services: `ApiWeather1` and `ApiWeather2`. These services are implemented in a modular way, allowing easy replacement or addition of new services.
 
-2. Start the app
+- **Service Replacement**: Each weather service implements a common interface (`ApiWeatherInterface`). This ensures that replacing a service with another one is straightforward. The services are dynamically imported to optimize performance and resource usage.
+- **UI Adaptation**: The UI adapts based on the selected weather service. This includes potential changes in colors or images to match the service's theme.
 
-   ```bash
-    npx expo start
-   ```
+### State Management
+The application uses Redux for state management. The `weatherProvider` slice handles the state related to weather data, including the selected API, forecast data, and input location.
 
-In the output, you'll find options to open the app in a
+- **Switching APIs**: The `switchApi` action allows toggling between the two weather services. When the API is switched, the UI automatically refreshes to display the weather data from the newly selected service.
+- **Fetching Forecast**: The `fetchForecast` async thunk fetches weather data from the selected service based on the input location.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### Input Validation
+Input validation is implemented to ensure that users enter valid latitude and longitude values. The validation checks if the values are within the acceptable range for latitude (-90 to 90) and longitude (-180 to 180).
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### Unit Testing
+Unit tests are written using Jest and `@testing-library/react-native`. The tests cover various aspects of the application, including state management, input validation, and component rendering.
 
-## Get a fresh project
+### TypeScript
+TypeScript is used throughout the application to ensure type safety and improve code quality. It helps catch errors early in the development process and provides better tooling support.
 
-When you're ready, run:
+## Directory Structure
+- `app/`: Contains the main application files.
+- `components/`: Contains reusable UI components.
+- `services/`: Contains the weather service implementations.
+- `store/`: Contains Redux slices and store configuration.
+- `hooks/`: Contains custom hooks.
+- `constants/`: Contains application constants.
+- `scripts/`: Contains utility scripts.
 
-```bash
-npm run reset-project
-```
+## How to Run
+1. Clone the repository.
+2. Install dependencies: `npm install`.
+3. Start the application: `npm run start`.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## How to Test
+Run the unit tests using the following command:
+```sh
+npm run test
+````
 
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+### Conclusion
+The WeatherApp is designed with modularity, type safety, and reliability in mind. The use of TypeScript, unit testing, and a well-structured codebase ensures that the application is maintainable and adaptable to future changes.
