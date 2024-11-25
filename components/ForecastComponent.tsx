@@ -1,10 +1,23 @@
 import React from 'react';
 import { View, StyleSheet, Dimensions } from 'react-native';
 import { useSelector } from 'react-redux';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import type { RootState } from '@/store/store';
 import { ApiWheatherResponse, isApiWheatherResponse } from '@/services/common/apiWheatherResponse';
 import { ThemedText } from '@/components/ThemedText';
+import TemperatureDisplay from '@/components/TemperatureDisplay';
+import WeatherDetails from '@/components/WeatherDetails';
+
+const getWeatherDescription = (temperature: number): string => {
+    if (temperature >= 30) {
+        return 'Hot';
+    } else if (temperature >= 20) {
+        return 'Warm';
+    } else if (temperature >= 10) {
+        return 'Cool';
+    } else {
+        return 'Cold';
+    }
+};
 
 const ForecastComponent = () => {
     const weatherProvider = useSelector((state: RootState) => state.weatherProvider);
@@ -15,6 +28,7 @@ const ForecastComponent = () => {
     }
 
     const { temperature, wind } = forecast;
+    const weatherDescription = getWeatherDescription(temperature);
 
     return (
         <View style={styles.container}>
@@ -23,21 +37,9 @@ const ForecastComponent = () => {
                 <ThemedText style={styles.date}>Today, {new Date().toLocaleString()}</ThemedText>
             </View>
 
-            <View style={styles.temperatureContainer}>
-                <ThemedText style={styles.temperature}>{temperature}°</ThemedText>
-                <ThemedText style={styles.weather}>Rainy</ThemedText>
-            </View>
+            <TemperatureDisplay temperature={temperature} weatherDescription={weatherDescription} />
 
-            <View style={styles.details}>
-                <View style={styles.detailItem}>
-                    <Icon name="thermometer" size={24} />
-                    <ThemedText style={styles.detailText}>{`Feels like: ${temperature - 2}°`}</ThemedText>
-                </View>
-                <View style={styles.detailItem}>
-                    <Icon name="weather-windy" size={24} />
-                    <ThemedText style={styles.detailText}>{`Wind: ${wind} km/h`}</ThemedText>
-                </View>
-            </View>
+            <WeatherDetails temperature={temperature} wind={wind} />
         </View>
     );
 };
@@ -59,29 +61,6 @@ const styles = StyleSheet.create({
     },
     date: {
         fontSize: 14,
-    },
-    temperatureContainer: {
-        alignItems: 'center',
-    },
-    temperature: {
-        fontSize: 100,
-        fontWeight: 'bold',
-    },
-    weather: {
-        paddingTop: 36,
-        fontSize: 20,
-        textTransform: 'capitalize',
-    },
-    details: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-    },
-    detailItem: {
-        alignItems: 'center',
-    },
-    detailText: {
-        fontSize: 14,
-        marginTop: 4,
     },
 });
 

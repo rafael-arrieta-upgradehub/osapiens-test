@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TemperatureDisplay renderslñmmñlmription 1`] = `
+<View
+  style={
+    {
+      "flexDirection": "row",
+      "justifyContent": "space-around",
+    }
+  }
+>
+  <View
+    style={
+      {
+        "alignItems": "center",
+      }
+    }
+  >
+    <ViewManagerAdapter_SymbolModule
+      animated={false}
+      colors={[]}
+      name="temperature-high"
+      resizeMode="scaleAspectFit"
+      style={
+        [
+          {
+            "height": 24,
+            "width": 24,
+          },
+          [
+            {
+              "height": 24,
+              "width": 24,
+            },
+            undefined,
+          ],
+        ]
+      }
+      type="monochrome"
+      weight="regular"
+    />
+    <Text
+      style={
+        [
+          {
+            "color": "#11181C",
+          },
+          {
+            "fontSize": 16,
+            "lineHeight": 24,
+          },
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          {
+            "fontSize": 14,
+            "marginTop": 4,
+          },
+        ]
+      }
+    >
+      Feels like: 23.12°
+    </Text>
+  </View>
+  <View
+    style={
+      {
+        "alignItems": "center",
+      }
+    }
+  >
+    <ViewManagerAdapter_SymbolModule
+      animated={false}
+      colors={[]}
+      name="wind-power"
+      resizeMode="scaleAspectFit"
+      style={
+        [
+          {
+            "height": 24,
+            "width": 24,
+          },
+          [
+            {
+              "height": 24,
+              "width": 24,
+            },
+            undefined,
+          ],
+        ]
+      }
+      type="monochrome"
+      weight="regular"
+    />
+    <Text
+      style={
+        [
+          {
+            "color": "#11181C",
+          },
+          {
+            "fontSize": 16,
+            "lineHeight": 24,
+          },
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          {
+            "fontSize": 14,
+            "marginTop": 4,
+          },
+        ]
+      }
+    >
+      Wind: 10.57 km/h
+    </Text>
+  </View>
+</View>
+`;

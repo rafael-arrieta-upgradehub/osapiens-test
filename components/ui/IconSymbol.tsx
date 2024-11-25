@@ -14,6 +14,8 @@ const MAPPING = {
   'chevron.left.forwardslash.chevron.right': 'code',
   'chevron.right': 'chevron-right',
   'settings': 'settings',
+  'wind-power': 'wind-power',
+  'temperature-high': 'thermostat',
 } as Partial<
   Record<
     import('expo-symbols').SymbolViewProps['name'],

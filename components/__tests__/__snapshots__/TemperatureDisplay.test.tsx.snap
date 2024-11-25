@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TemperatureDisplay renders correctly with temperature and weather description 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+    }
+  }
+>
+  <Text
+    style={
+      [
+        {
+          "color": "#11181C",
+        },
+        {
+          "fontSize": 16,
+          "lineHeight": 24,
+        },
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        {
+          "fontSize": 100,
+          "fontWeight": "bold",
+        },
+      ]
+    }
+  >
+    25.00
+    °
+  </Text>
+  <Text
+    style={
+      [
+        {
+          "color": "#11181C",
+        },
+        {
+          "fontSize": 16,
+          "lineHeight": 24,
+        },
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        {
+          "fontSize": 20,
+          "paddingTop": 36,
+          "textTransform": "capitalize",
+        },
+      ]
+    }
+  >
+    Warm
+  </Text>
+</View>
+`;
+
+exports[`TemperatureDisplay renders correctly with temperature and weather description 2`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+    }
+  }
+>
+  <Text
+    style={
+      [
+        {
+          "color": "#11181C",
+        },
+        {
+          "fontSize": 16,
+          "lineHeight": 24,
+        },
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        {
+          "fontSize": 100,
+          "fontWeight": "bold",
+        },
+      ]
+    }
+  >
+    25.00
+    °
+  </Text>
+  <Text
+    style={
+      [
+        {
+          "color": "#11181C",
+        },
+        {
+          "fontSize": 16,
+          "lineHeight": 24,
+        },
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        {
+          "fontSize": 20,
+          "paddingTop": 36,
+          "textTransform": "capitalize",
+        },
+      ]
+    }
+  >
+    Cold
+  </Text>
+</View>
+`;
