@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TemperatureDisplay renderslñmmñlmription 1`] = `
+exports[`TemperatureDisplay renders correctly 1`] = `
 <View
   style={
     {
