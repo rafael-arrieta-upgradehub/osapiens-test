@@ -1,15 +1,39 @@
 import { Tabs } from 'expo-router';
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Platform } from 'react-native';
-
+import * as Location from 'expo-location';
 import { HapticTab } from '@/components/HapticTab';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import {useDispatch, useSelector} from "react-redux";
+import {AppDispatch, RootState} from "@/store/store";
+import {fetchForecast, setLocation} from "@/store/slices/weatherProvider";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+    const dispatch = useDispatch<AppDispatch>();
+    const { selectedApi, latitude, longitude } = useSelector((state: RootState) => state.weatherProvider);
+
+    useEffect(() => {
+        (async () => {
+            let { status } = await Location.requestForegroundPermissionsAsync();
+            if (status !== 'granted') {
+                console.log('Permission to access location was denied');
+                return;
+            }
+
+            let location = await Location.getCurrentPositionAsync({});
+            dispatch(setLocation({ latitude: location.coords.latitude, longitude: location.coords.longitude }));
+        })();
+    }, [dispatch]);
+
+    useEffect(() => {
+        if (latitude && longitude) {
+            dispatch(fetchForecast({ api: selectedApi, params: { latitude, longitude } }));
+        }
+    }, [dispatch, selectedApi, latitude, longitude]);
 
   return (
     <Tabs
@@ -34,10 +58,10 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="settings"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: 'Settings',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="settings" color={color} />,
         }}
       />
     </Tabs>

@@ -24,11 +24,17 @@ const weatherProvider = createSlice({
         selectedApi: 'apiWeather1',
         forecast: {},
         status: 'idle',
-        error: ''
+        error: '',
+        latitude: null,
+        longitude: null
     },
     reducers: {
         switchApi: (state, action) => {
             state.selectedApi = action.payload;
+        },
+        setLocation: (state, action) => {
+            state.latitude = action.payload.latitude;
+            state.longitude = action.payload.longitude;
         }
     },
     extraReducers: (builder) => {
@@ -47,5 +53,5 @@ const weatherProvider = createSlice({
     }
 });
 
-export const { switchApi } = weatherProvider.actions;
+export const { switchApi, setLocation } = weatherProvider.actions;
 export default weatherProvider.reducer;
